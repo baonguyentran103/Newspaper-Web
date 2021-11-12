@@ -1,0 +1,116 @@
+
+{{#sections 'js'}}
+<script src="../assets/js/profile.js"></script>
+{{/sections}}
+
+<div class="container">
+<div id="otp-confirm" style="display:none">
+  <div class="card text-center" style="padding:20px;">
+  <h3>
+Your account has not been verified, please verify by entering the OTP sent to your registered email</h3>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">   
+
+        <div class="alert alert-success alert-dismissible" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span class="success-message"></span>
+        </div>
+
+        <form id="otpForm">
+          <div class="form-group">  
+            <label for="mobile">OTP:</label>
+            <input type="text" class="form-control" name="otp" placeholder="Enter OTP" required="" id="otp">
+            <span class="otp-message" style="color: red;"></span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" id="verifyOtp">Verify OTP</button>
+          </div>
+        </form>        
+      </div>
+  </div>
+</div>
+
+</div>
+<div class="card text-center" id="card-profile">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body" id="user-information">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">FullName: {{account.TenUS}}</p>
+    {{#if account.ButDanh}}
+    <p class="card-text">Pseudonym: {{account.ButDanh}}</p>
+    {{/if}}
+    <p class="card-text">Email: {{account.Email}}</p>
+    <p class="card-text">DOB: {{format_date account.NgaySinh}}</p>
+    <p class="card-text">Type: {{#if this.IsPremium}}Premium{{else}}Normal{{/if}}</p>
+    {{#if this.IsPremium}}
+      <p class="card-text" id ="time">Premium time left: {{this.PreTime}} minutes</p>
+    {{/if}}
+    <a class="btn btn-primary" id="changeprofile">Chỉnh sửa</a>
+    {{#if this.IsPremium}}{{else}}<a class="btn btn-primary" id="assignPre">Đăng ký Premium</a>{{/if}}
+  </div>
+ 
+  <div class="card-body" style="display:none" id="change-profile-form">
+    <h5 class="card-title">Special title treatment</h5>
+    <div class="form-group"> 
+          <div>
+             <label for="mobile">Họ và tên: </label>
+             <input type="text" class="form-control" id="profilename" value="{{account.TenUS}}">
+          </div>
+          </div>
+    <div class="form-group"> 
+          <div>
+             <label for="mobile">Email: </label>
+             <input type="email" class="form-control" id="profilemail" value="{{account.Email}}">
+          </div>
+          <span class="email-message" style="color: red;"></span>
+          </div>
+    {{#if account.ButDanh}}
+     <div class="form-group"> 
+          <div>
+             <label for="mobile">Pseudonym: </label>
+             <input type="text" class="form-control" id="profilepseudonym" value="{{account.ButDanh}}">
+          </div>
+     </div>
+    {{/if}}
+    <div class="form-group"> 
+          <div>
+             <label for="mobile">Ngày sinh: </label>
+             <input type="date" class="form-control" id="profileDOB" value="{{format_date account.NgaySinh}}">
+          </div>
+          </div>
+    <div class="d-flex justify-content-around">
+      <a  class="btn btn-primary" id="submit-form">Submit</a>
+      <a  class="btn btn-primary" id="cancel-form">Cancel</a>
+    </div>
+    
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+</div>
+{{#if this.NeedPre}}
+<script>
+  Swal.fire("", "You need to be a Premiumer to access that file.");
+</script>
+{{/if}}
+{{#if this.IsPremium}}
+<script>
+  var minus =0;
+  function setMinute(){
+    var time = {{this.PreTime}} - minus;
+    minus= minus +1;
+    time = Math.max(0, time);
+    const strNow = `Premium time Left: ${time} minutes`; 
+    document.querySelector('#time').innerHTML=strNow;
+  }
+  setMinute();
+  setInterval(setMinute, 60000);
+</script>
+{{/if}}

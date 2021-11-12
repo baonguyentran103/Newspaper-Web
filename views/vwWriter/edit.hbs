@@ -1,0 +1,81 @@
+<div class="modal" id="myModal_mess">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" >Message</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="mess"></div>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+  <h4 class="card-header">
+    List
+  </h4>
+   <br>
+  {{#if this.empty}}
+    <h5 class="card-title">No data!</h5>
+    {{else}}
+      {{#each this.allpaper}}
+      
+        <div class="card mb-3" >
+          <div class="row no-gutters" style="padding: 1%;">
+            <div class="col-md-4" style="padding-right: 2%;">
+              <img src="{{LinkAnhDD}}" alt="..." style="width:100%; height: 210px;" class="mx-auto d-block">
+            </div>
+            <div class="col-md-8">
+            
+                <h5 class="card-title">{{TieuDe}}</h5>
+                <p class="card-text">{{TomTat}}</p>
+               
+            
+              <div style=" position: absolute;bottom:0px;right:0px">
+              <a class="btn btn-outline-success btn-sm"  href="../../editContent?id={{MaBV}}" role="button" title="Edit">
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                    </svg>
+                </a>
+              
+
+              <button class="btn btn-outline-primary btn-sm"  href="#"  title="Message" data-toggle="modal" data-target="#myModal_mess"
+              onclick="mess(`{{ChuThich}}`)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+                <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+              </svg>
+              </button>
+                </div> 
+                 
+              <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+              {{TenCM}}
+              </small></p>
+              
+
+            </div>
+          </div>
+        </div>
+        
+
+      {{/each}}
+    </div>
+    {{/if}}
+      
+</div>
+
+  <script>
+    function mess(chuthich) {
+      document.getElementById('mess').textContent = chuthich;
+    };
+  </script>
+
+
+

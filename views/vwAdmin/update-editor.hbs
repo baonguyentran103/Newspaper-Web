@@ -1,0 +1,225 @@
+<div class="input-group-prepend">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" 
+    aria-haspopup="true" aria-expanded="false">Manage</button>
+    <div class="dropdown-menu">
+      
+      <h6 class="collapse-header" style="margin-left: 10px;">Update:</h6>
+      <a class="dropdown-item active" href="update-editor">Editor</a>
+      <a class="dropdown-item" href="update-writer">Writer</a>
+      <a class="dropdown-item" href="update-subscriber">Subscriber</a>
+      
+
+      <h6 class="collapse-header" style="margin-left: 10px;">Add:</h6>
+        <a class="dropdown-item "  href="add-editor" >Editor</a>
+        <a class="dropdown-item"  href="add-writer">Writer</a>
+        <a class="dropdown-item "  href="add-subscriber">Subscriber</a>
+ 
+
+      <div role="separator" class="dropdown-divider"></div>
+      
+    </div>
+</div>
+
+<br>
+<div id="wrapper">
+
+        <!-- Sidebar -->
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="row">
+                                <div class="col-10" >
+                                <h4 class="m-0 font-weight-bold text-primary">Editor - Category</h4>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th style="text-align: center;">Status</th>
+                                           
+                                            <th style="text-align: center;">Edit</th>
+                                        </tr>
+                                    </thead>
+                                        
+                                    <tfoot>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th style="text-align: center;">Status</th>
+                                           
+                                            <th style="text-align: center;">Edit</th>
+                                        </tr>
+                                      </tfoot>
+                                    <tbody>
+{{#if this.empty}}
+    <h5 class="card-title">No data!</h5>
+{{else}}
+    {{#each this.list_ed_ca}}
+    <tr>
+        <th scope="row">{{MaUS}}</th>
+        <td>{{TenUS}}</td>
+        <td>
+            {{TenCM}}
+        </td>
+        <td align="center">{{TrangThai}}</td>
+        <td align="center">
+            <button type="button" class="btn btn-primary" title="Edit" data-toggle="modal" data-target="#myModal_Edit"
+                onclick="admin_edit_editor(`{{MaUS}}`,`{{TenUS}}`,`{{TenCM}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"></path>
+                </svg>
+            </button>
+        </td> 
+    </tr>
+    {{/each}}
+{{/if}}
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+ 
+            </div>
+ 
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+<div class="modal" id="myModal_Edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Editor</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/mana_editor" method="POST">
+                    <div class="container">
+                        
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Code:</label>
+                            <div  id="ad_editor_code1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="ad_editor_code" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Name:</label>
+                            {{!-- <textarea class="form-control" id="tieude_approve"></textarea> --}}
+                            <div id="ad_editor_name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+
+                            <label style="font-weight: bold;">Edit Category:</label>
+                            <br>
+                           <select multiple name="txtCat" title="Category ... " data-live-search="true"
+                           id="list1">
+
+                           </select>
+                            
+                        </div>
+
+
+                    </div>
+                    {{!-- <div class="container">
+                        <div class="form-group">
+                            <label for="comment">Publication date (dd/mm/yyyy):</label>
+                            <textarea class="form-control" rows="1" id="comment" name="txtngaydang"></textarea>
+                        </div>
+                    </div> --}}
+                    <button type="submit" class="btn btn-info"> Update </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+<script>
+    function admin_edit_editor(MaUS,TenUS,TenCM) {
+
+    $.ajax
+      ({
+        url  : `/admin/get_cat`,
+        type : "POST",
+        cache:false,
+        data : {MaUS},
+        success:function(response){
+          console.log(response);
+         //console.log(response.tag1[0].MaNhan);
+         let src="";
+         let tmp1=response.cat1;
+         let tmp2=response.cat2;
+        
+         for(let i=0;i<response.cat1.length;i++)
+         {
+           let temp1=tmp1[i].MaCM;
+           let temp2=tmp1[i].TenCM;
+           //src=src+`<option value='${tmp1[i].MaNhan}' selected>${tmp1[i].TenNhan}</option>`
+           src=src+`<option value="`+temp1+`"selected class="opt-remove">`+temp2+`</option>`
+         }
+        //console.log(src);
+         for(let i=0;i<response.cat2.length;i++)
+         {
+           src=src+`<option value='${tmp2[i].MaCM}' class="opt-remove">${tmp2[i].TenCM}</option>`
+         }
+         
+        $('.opt-remove').remove();
+         $('#list1').selectpicker();
+         //console.log(src);
+         $("#list1").append(src);
+         $('#list1').selectpicker('refresh');
+         }
+      });
+
+
+     document.getElementById('ad_editor_code1').textContent = MaUS;
+      document.getElementById('ad_editor_code').textContent = MaUS;
+      document.getElementById('ad_editor_name').textContent = TenUS;  
+      
+    };
+</script>

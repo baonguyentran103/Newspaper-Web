@@ -1,0 +1,31 @@
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Accept</th>
+    </tr>
+  </thead>
+  <tbody>
+{{#each this.list_requesst}}     
+<form action="/admin/view/req_premium" method="POST">
+    <tr>
+      <th scope="row">{{MaUS}}
+          <input type="text" hidden value="{{MaUS}}" name="txtCode" cols="7">
+      </th>
+      <td name="txtCode">{{TenUS}}</td>
+      <td>
+          <button type="submit" class="btn btn-success"> Accept </button>
+      </td>
+    </tr>
+</form>
+{{/each}}
+</tbody>
+</table>
+
+
+
+

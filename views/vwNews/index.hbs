@@ -1,0 +1,143 @@
+<style>
+    .print{
+        position: fixed;
+        top: 250px;
+        left: 1150px;
+    }
+}
+</style>
+{{#sections 'css'}}
+<link rel="stylesheet" href="../assets/css/mycss/comment.css"/>
+{{/sections}}
+<div class="d-flex justify-content-center">
+    <div class="card text" style="padding-right: 170px; padding-left: 170px" >
+    {{#if this.UsPre}}
+    {{#each this.news}}
+    <a href="./news/print?id={{MaBV}}" class="print"><img src="../assets/images/print.png" alt=''></a>
+    {{/each}}
+    {{/if}}
+  <div class="card-body">
+
+     <div class="card-header"  >
+         <div class="row">
+            <div class="col-9">
+                <div class="d-flex">
+                <span>
+                <a href="./">Home</a>
+                >
+                {{#each this.CateDad}}
+                <a href= "./category?id={{MaCM}}">{{TenCM}}</a>
+                {{/each}}  
+                > 
+                {{#each this.Cate}}
+                <a href= "./caterogy?id={{MaCM}}">{{TenCM}}</a>
+                {{/each}}  
+                </span>
+                <span class="err" id ="cate_name"></span>
+                </div>
+            </div>
+            {{#each this.news}}
+            <div class="col-3">
+                <div class="float-right">
+                Date: {{format_date NgayXuatBan}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <blockquote class="blockquote mb-0" >
+        <br>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-8">
+                <div class="float-left">
+                    <div style="font-size:large; font-weight:bold " > <h1>{{TieuDe}}</h1></div><br>
+                    <div>
+                    {{{NoiDung}}} 
+                    </div>
+                    <div>{{ButDanh}}</div>
+                    {{/each}}
+                    <br>
+                    Tags: 
+                    {{#each Tags}}
+                        <a href="/news/caterogy?tag={{MaNhan}}">
+                        
+                            {{TenNhan}}
+                        </a>
+                    {{/each}}
+                    <br>
+                    <br>
+                    <div>Related news</div> <br>
+                    <ul>
+                    {{#each this.fivePosts}}
+                        <li><a href="/news/?id={{MaBV}}">{{TieuDe}}</a></li>
+                    {{/each}}
+                    </ul>
+                    <div  >
+                        <section class="content-item" id="comments"  >
+                            <div class="container" style="padding-left: 0%">   
+                                <div class="row" >
+                                    <div class="col-sm-10">   
+                                        {{#if this.auth}}
+                                        <form method="POST" >
+                                            <div class="pull-left">New Comment</div>
+                                            <br>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-sm-3 col-lg-2 hidden-xs">
+                            	                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" style="height: 100px; width:100px">
+                                                    </div>
+                                                    <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                                        <textarea class="form-control" id="message" placeholder="Your comment" required="" name ="message"></textarea>
+                                                    </div>
+                                                </div>  	
+                                            </fieldset>
+                                            
+                                            <div class="d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-secondary " style="border-radius: 20px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" fill="currentColor"  viewBox="0 0 16 16">
+                                                        <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"></path>
+                                                    </svg>
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        
+                                        </form>
+                                        {{/if}}
+                                        <h3>Comments</h3>
+                                        
+                                        <!-- COMMENT 1 - START -->
+                                        {{#each this.Comments}}
+                                        <div class="media">
+                                            <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""></a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">{{TenUS}}</h4>
+                                                <p>{{NoiDung}}</p>
+                                                <ul class="list-unstyled list-inline media-detail pull-left">
+                                                    <li><i class="fa fa-calendar"></i>{{format_date ThoiGian}}</li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                        <!-- COMMENT 1 - END -->
+
+                                        
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+        </blockquote>
+  </div>
+    </div>
+</div>
+
+
+
+

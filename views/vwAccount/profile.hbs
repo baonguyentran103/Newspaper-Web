@@ -1,0 +1,153 @@
+
+{{#sections 'js'}}
+<script src="../assets/js/profile.js"></script>
+{{/sections}}
+
+{{#sections 'css'}}
+ <link rel='stylesheet' href='../assets/css/mycss/profile.css' />
+{{/sections}}
+
+<div class="container">
+<div id="otp-confirm" style="display:none">
+  <div class="card text-center" style="padding:20px;">
+  <h3>
+Your account has not been verified, please verify by entering the OTP sent to your registered email</h3>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">   
+
+        <div class="alert alert-success alert-dismissible" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span class="success-message"></span>
+        </div>
+
+        <form id="otpForm">
+          <div class="form-group">  
+            <label for="mobile">OTP:</label>
+            <input type="text" class="form-control" name="otp" placeholder="Enter OTP" required="" id="otp">
+            <span class="otp-message" style="color: red;"></span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" id="verifyOtp">Verify OTP</button>
+          </div>
+        </form>        
+      </div>
+  </div>
+</div>
+</div>
+</div>
+{{#if this.NeedPre}}
+<script>
+  Swal.fire("", "You need to be a Premiumer to access that file.");
+</script>
+{{/if}}
+
+<div class="container" id="card-profile">
+<div class="row gutters">
+<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="account-settings">
+			<div class="user-profile">
+				<div class="user-avatar">
+					<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+				</div>
+				<h5 class="user-name">{{account.TenUS}}</h5>
+				<h6 class="user-email">{{account.Email}}</h6>
+                <div class="about">
+                {{#if account.ButDanh}}
+                    <h6>{{account.ButDanh}}</h6>
+                 {{/if}} 
+                  <h6>{{format_date account.NgaySinh}}</h6>
+				  {{#if this.NotUser}}
+				  {{else}}
+                  <h6>{{#if this.IsPremium}}Premium{{else}}Normal{{/if}}</h6> 
+				  {{/if}} 
+                </div>
+                </div>
+			<div class="about">
+				<h5>About</h5>
+				<p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+			</div>
+			{{#if this.NotUser}}
+			{{else}}
+            {{#if this.IsPremium}}
+                <p class="card-text" id ="time">Premium time left: {{this.PreTime}} minutes</p>
+            {{/if}}
+			<div class="d-flex justify-content-center">
+				{{#if this.IsPremium}}{{else}}<a class="btn btn-primary" id="assignPre">Assign Premium</a>{{/if}}
+			</div>
+			{{/if}}
+             
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mb-2 text-primary">Personal Details</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="fullName">Full Name</label>
+					<input required type="text" class="form-control" id="profilename" value="{{account.TenUS}}">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="eMail">Email</label>
+					<input required type="email" class="form-control" id="profilemail" value="{{account.Email}}">
+				</div>
+                <span class="email-message" style="color: red;"></span>
+			</div>
+             {{#if account.ButDanh}}
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="phone">Pseudonym</label>
+					<input required type="text" class="form-control" id="profilepseudonym" value="{{account.ButDanh}}">
+				</div>
+			</div>
+            {{/if}}
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="website">Date of birth</label>
+					 <input required type="date" class="form-control" id="profileDOB" value="{{format_date account.NgaySinh}}">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-right">
+					<button type="button" id="cancel-form" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="button" id="submit-form" name="submit" class="btn btn-primary">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+{{#if this.NotUser}}
+{{else}}
+{{#if this.IsPremium}}
+<script>
+  var minus =0;
+  function setMinute(){
+    var time = {{this.PreTime}} - minus;
+    minus= minus +1;
+    time = Math.max(0, time);
+    const strNow = `Premium time Left: ${time} minutes`; 
+    document.querySelector('#time').innerHTML=strNow;
+  }
+  setMinute();
+  setInterval(setMinute, 60000);
+</script>
+{{/if}}
+{{/if}}

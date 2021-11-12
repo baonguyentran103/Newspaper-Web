@@ -1,0 +1,339 @@
+<div class="container">
+         <div class="banner-top-thumb-wrap">
+            <div class="d-lg-flex justify-content-between align-items-center" style="height: 9%;">
+              
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="owl-carousel owl-theme" id="main-banner-carousel">
+                {{#each fourNewsPopular}}
+                <div class="item">
+                  <a href="../news?id={{MaBV}}">
+                  <div class="carousel-content-wrapper mb-2">
+                    <div class="carousel-content">
+                      <h1 class="font-weight-bold">
+                        {{TieuDe}}
+                      </h1>
+                      <h5 class="font-weight-normal  m-0">
+                        {{TomTat}}
+                      </h5>
+                      <p class="text-color m-0 pt-2 d-flex align-items-center">
+                        <span class="fs-10 mr-1">{{format_date NgayXuatBan}}</span>
+                        <i class="mdi mdi-bookmark-outline mr-3"></i>
+                        
+                      </p>
+                    </div>
+                    <div class="carousel-image">
+                      <img src="{{LinkAnhDD}}" alt="" style="height: 450px;"/>
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; left:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                    </div>
+                  </div>
+                  </a>
+                  
+                </div>
+                {{/each}}
+                
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="row">
+                {{#each this.SixPost}}
+                <div class="col-sm-6" >
+                  <div class="py-3 border-bottom" style="height: 150px;">
+                    
+                    <a href="/News?id={{MaBV}}" class="fs-14 m-0 font-weight-medium line-height-sm">
+                      {{TieuDe}}
+                    </a>
+                  </div>
+                </div>
+                {{/each}}
+                
+              </div>
+            </div>
+          </div>
+          <div class="world-news">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="d-flex position-relative  float-left">
+                  <h3 class="section-title">Most Views</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              {{#each tenNewsViews}}
+              <div class="col-lg-3 col-sm-6 grid-margin mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="{{LinkAnhDD}}"
+                    class="img-fluid"
+                    alt="world-news"
+                    style="height: 170px"
+                  />
+                  {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                  <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                </div>
+                <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                <h5 class="font-weight-bold mt-3">
+                  <a href="../news?id={{MaBV}}">{{TieuDe}}</a>
+                </h5>
+                <p class="fs-15 font-weight-normal text3">
+                  {{TomTat}}
+                </p>
+              </div>
+              {{/each}}
+              
+            </div>
+          </div>
+          <div class="editors-news">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="d-flex position-relative float-left">
+                  <h3 class="section-title">Lasted News</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="{{firstNewsNewest.LinkAnhDD}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  {{#if firstNewsNewest.IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                  <a href="../news/caterogy?id={{firstNewsNewest.MaCM}}"><span class="thumb-title">{{firstNewsNewest.TenCM}}</span></a> 
+                </div>
+                <div class="date-publish">{{format_date firstNewsNewest.NgayXuatBan}}</div>
+                <h1 class="font-weight-600 mt-3">
+                  <a href="../news?id={{firstNewsNewest.MaBV}}">
+                    {{firstNewsNewest.TieuDe}}
+                  </a>
+                </h1>
+                
+                
+                <p class="fs-15 font-weight-normal">
+                  {{firstNewsNewest.TomTat}}
+                </p>
+              </div>
+              <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="row">
+                  {{#each two1NewsNewest}}
+                  <div class="col-sm-6  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="{{LinkAnhDD}}"
+                        class="img-fluid"
+                        alt="world-news"
+                        style="height: 150px; width: 250px"
+                      />
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                      <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                    </div>
+                    <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                    <h5 class="font-weight-bold mt-3">
+                      <a href="../news?id={{MaBV}}">
+                        {{TieuDe}}
+                      </a>
+                    </h5>
+                    
+                    <p class="fs-15 font-weight-normal text">
+                      {{TomTat}}
+                    </p>
+                  </div>
+                  {{/each}}
+                  
+                </div>
+                <div class="row mt-3">
+                  {{#each two2NewsNewest}}
+                  <div class="col-sm-6  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="{{LinkAnhDD}}"
+                        class="img-fluid"
+                        alt="world-news"
+                        style="height: 150px; width: 250px"
+                      />
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                      <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                    </div>
+                    <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                    <h5 class="font-weight-bold mt-3">
+                      <a href="../news?id={{MaBV}}">
+                        {{TieuDe}}
+                      </a>
+                    </h5>
+                    <p class="fs-15 font-weight-normal text">
+                      {{TomTat}}
+                    </p>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="row">
+                  {{#each two3NewsNewest}}
+                  <div class="col-sm-6  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="{{LinkAnhDD}}"
+                        class="img-fluid"
+                        alt="world-news"
+                        style="height: 150px; width: 250px"
+                      />
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                      <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                    </div>
+                    <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                    <h5 class="font-weight-bold mt-3">
+                      <a href="../news?id={{MaBV}}">
+                        {{TieuDe}}
+                      </a>
+                    </h5>
+                    <p class="fs-15 font-weight-normal text">
+                      {{TomTat}}
+                    </p>
+                  </div>
+                  {{/each}}
+                  
+                </div>
+                <div class="row mt-3">
+                  {{#each two4NewsNewest}}
+                  <div class="col-sm-6  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="{{LinkAnhDD}}"
+                        class="img-fluid"
+                        alt="world-news"
+                        style="height: 150px; width: 250px"
+                      />
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                      <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                    </div>
+                    <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                    <h5 class="font-weight-bold mt-3">
+                      <a href="../news?id={{MaBV}}">
+                        {{TieuDe}}
+                      </a>
+                    </h5>
+                    <p class="fs-15 font-weight-normal text">
+                      {{TomTat}}
+                    </p>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+              <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="{{fithNewsNewest.LinkAnhDD}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  
+                  {{#if fithNewsNewest.IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                  {{/if}}
+                  <a href="../news/caterogy?id={{fithNewsNewest.MaCM}}"><span class="thumb-title">{{fithNewsNewest.TenCM}}</span></a>
+                </div>
+                <div class="date-publish">{{format_date fithNewsNewest.NgayXuatBan}}</div>
+                <h1 class="font-weight-600 mt-3">
+                  <a href="../news?id={{fithNewsNewest.MaBV}}">
+                    {{fithNewsNewest.TieuDe}}
+                  </a>
+                </h1>
+                <p class="fs-15 font-weight-normal">
+                  {{fithNewsNewest.TomTat}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="popular-news">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="d-flex position-relative float-left">
+                  <h3 class="section-title">Editor choice</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="row">
+                  {{#each tenNewsCate}}
+                  <div class="col-sm-4  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="{{LinkAnhDD}}"
+                        class="img-fluid"
+                        alt="world-news"
+                        style="height: 200px;"
+                      />
+                      {{#if IsPremium}}
+                        <img src ="../assets/images/icon.png" style="position:absolute; right:28px; top:5px; width:40px;height:40px;">
+                      {{/if}}
+                      <a href="../news/caterogy?id={{MaCM}}"><span class="thumb-title">{{TenCM}}</span></a>
+                    </div>
+                    <div class="date-publish">{{format_date NgayXuatBan}}</div>
+                    <h5 class="font-weight-bold mt-3">
+                      <a href="../news?id={{MaBV}}">
+                        {{TieuDe}}
+                      </a>
+                    </h5>
+                  </div>
+                  {{/each}}
+                  
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="position-relative mb-3">
+                  <img
+                    src="assets/images/dashboard/star-magazine-15.jpg"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <div class="video-thumb text-muted">
+                    <span><i class="mdi mdi-menu-right"></i></span>LIVE
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="d-flex position-relative float-left">
+                      <h3 class="section-title">Week's News</h3>
+                    </div>
+                  </div>
+                  {{#each this.FourPost}}
+                  <div class="col-sm-12">
+                    <div class="border-bottom pb-3">
+                      <a href="../News?id={{MaBV}}">
+                      <h5 class="font-weight-600 mt-0 mb-0">
+                        {{TieuDe}}
+                      </h5>
+                      </a>
+                      
+                      
+                    </div>
+                  </div>
+                  {{/each}}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>

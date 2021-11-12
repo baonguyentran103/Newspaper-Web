@@ -1,0 +1,62 @@
+
+{{#sections 'css'}}
+<link rel="stylesheet" type="text/css" href="https://vnn-res.vgcloud.vn/resources.cssx?alias=css-desktop-v9-detail&amp;version=0.4.0">
+{{/sections}}
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="text-center">
+          <h1 class="text-center mt-5">
+            {{Cate.TenCM}}
+          </h1>
+        </div>
+      </div>
+    </div>
+    {{#each CateChild}}
+    <h5 class="text-muted font-weight-medium mb-3">{{TenCM}}</h5>
+  <div class="row">
+      {{#each bv}}
+      <div class="col-sm-4  mb-5 mb-sm-2" >
+        
+        <div class="position-relative image-hover">
+          <img style="height: 240px"
+            src="{{LinkAnhDD}}"
+            class="img-fluid"
+            alt="world-news"
+          />
+          {{#if IsPremium}}
+          <img src ="../assets/images/icon.png" style="position:absolute; right:15px; top:10px; width:40px;height:40px;">
+          {{/if}}
+          
+          <span class="Date">
+            <div id="BoxTag" class="tagBox">
+            <div class="tagBoxContent"><ul class="clearfix">
+            <li><span class="tagBoxTitle0">Tag : </span></li>
+            {{#each nhan}}
+            <li><a href="/news/caterogy?tag={{MaNhan}}" style="text-decoration: none; color:black">{{TenNhan}}</a></li>
+            {{/each}}
+            </ul>
+          </div>
+        </div>
+          </span>
+        </div>
+         <div class="date-publish">{{format_date NgayDang}}</div>
+        <h5 class="font-weight-600 mt-3">
+          <a href="/news/?id={{MaBV}}" style="text-decoration: none; color:black">{{TieuDe}}</a>
+        </h5>
+        <p class="fs-15 font-weight-normal">
+          {{TomTat}}
+        </p>
+        
+      </div>
+      {{/each}}
+      <br>
+      <div class="d-flex justify-content-end w-100" ><a href="/news/caterogy?id={{MaCM}}" class="font-weight-bold text-dark pt-2"> See more...</a></div>
+      <br>
+      <br>
+      <br>
+  </div>
+  {{/each}}
+</div>
+    

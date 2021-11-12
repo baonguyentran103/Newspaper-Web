@@ -1,0 +1,63 @@
+<div class="card">
+  <h4 class="card-header">
+    New Category
+  </h4>
+  <div class="card-body">
+    <form method="POST" onsubmit="checkWritePost()">
+      <div class="form-group">
+
+        <label for="cateName">Category:</label>
+        <select class="selectpicker" id = "cateName" name = "CateName" required>
+            {{#each this.cate1}}
+                <option value="{{MaCM}}" selected>{{TenCM}}</option>
+            {{/each}}
+            {{#each this.cate2}}
+                <option value="{{MaCM}}">{{TenCM}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <br>
+        <label for="title">Tiêu đề:</label>
+        {{#each this.news}}
+        <input class="form-control" id ="title" type="text" placeholder="Tiêu đề" name = 'title', value="{{TieuDe}}">
+        <br>
+        <label for="Avatar">Link ảnh đại diện:</label>
+        <input class="form-control" id ="Avatar" type="text" placeholder="Đại diện" name = 'Avatar', value="{{LinkAnhDD}}">
+        <br>
+        {{/each}}
+        <div class="mb-3">
+          <label for="Abstract" class="form-label">Tóm tắt</label>
+          {{#each this.news}}
+          <textarea class="form-control" id="Abstract" rows="3" name="abstract">{{TomTat}}</textarea>
+          {{/each}}
+        </div>
+        <br>
+        {{#each this.news}}
+        <label for="content">Nội dung:</label>
+        <textarea name="content" id="content" rows="10" cols="80">{{{NoiDung}}}</textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor 4
+            // instance, using default configuration.
+            CKEDITOR.replace( 'content' );
+        </script>
+        {{/each}}
+        <br>
+        <label for="nhan">Nhãn:</label>
+        <select class="selectpicker" multiple data-live-search="true" aria-label="multiple select example" name="nhan" id ="nhan" required>
+          {{#each this.tag1}}
+            <option value="{{MaNhan}}" selected>{{TenNhan}}</option>
+          {{/each}}
+          {{#each this.tag2}}
+            <option value="{{MaNhan}}">{{TenNhan}}</option>
+          {{/each}}
+        </select>
+        <br>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Save
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

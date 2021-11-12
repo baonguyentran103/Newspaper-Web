@@ -1,0 +1,325 @@
+
+<div class="container">
+    <h2>Post</h2>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#menu0" 
+        onclick = "addClass(`tab0`)" id="tab0" role="tab" aria-controls="nav-home" aria-selected="true">Published</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#menu1" 
+        onclick = "addClass(`tab1`)" id="tab1" role="tab" aria-controls="nav-profile" aria-selected="false">Waiting for publication</a> 
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#menu2" 
+        onclick = "addClass(`tab2`)" id="tab2" role="tab" aria-controls="nav-contact" aria-selected="false">Draft</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#menu3" 
+        onclick = "addClass(`tab3`)" id="tab3" role="tab" aria-controls="nav-profile" aria-selected="false">Refuse</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#menu4" 
+        onclick = "addClass(`tab4`)" id="tab4" role="tab" aria-controls="nav-contact" aria-selected="false">Deleted</a>
+    </div>
+</nav>
+    <br>
+    <div class="tab-content">
+
+        <div id="menu0" class="tab-pane fade in active">
+
+            {{#if this.empty_public}}
+            <h5 class="card-title">No data!</h5>
+            {{else}}
+            {{#each this.list_post_public}}
+
+
+            <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+                <div class="row no-gutters"
+                    style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+                    <div class="col-md-4" style="padding-right: 2%;">
+                        <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 210px" class="mx-auto d-block">
+                    </div>
+                    <div class="col-md-8">
+
+                        <h5 class="card-title">{{TieuDe}}</h5>
+                        <p class="card-text">{{TomTat}}</p>
+                        <div id="tags_approve{{MaBV}}">
+                            {{#each listTag}}
+                            {{TenNhan}}.
+                            {{/each}}
+                        </div>
+                        <div style=" position: absolute;bottom:0px;right:0px">
+                            <button type="button" class="btn btn-primary">Read</button>
+                            <button type="button" class="btn btn-success" href="#" >Edit</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#myModal_Delete"
+                                onclick="action_delete(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`)">Delete</button>
+
+                        </div>
+
+                        <div>
+                            <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                                    {{TenCM}}
+                                </small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            {{#if this.empty_approve}}
+            <h5 class="card-title">No data!</h5>
+            {{else}}
+            {{#each this.list_post_approve}}
+
+
+            <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+                <div class="row no-gutters"
+                    style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+                    <div class="col-md-4" style="padding-right: 2%;">
+                        <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 210px;" class="mx-auto d-block">
+                    </div>
+                    <div class="col-md-8">
+
+                        <h5 class="card-title">{{TieuDe}}</h5>
+                        <p class="card-text">{{TomTat}}</p>
+                        <div id="tags_approve{{MaBV}}">
+                            {{#each listTag}}
+                            {{TenNhan}}.
+                            {{/each}}
+                        </div>
+                        <div style=" position: absolute;bottom:0px;right:0px">
+                            <button type="button" class="btn btn-primary">Read</button>
+                            <button type="button" class="btn btn-success" href="#" >Edit</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#myModal_Delete"
+                                onclick="action_delete(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`)">Delete</button>
+
+                        </div>
+
+                        <div>
+                            <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                                    {{TenCM}}
+                                </small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+
+        <div id="menu2" class="tab-pane fade">
+            {{#if this.empty_waitting}}
+            <h5 class="card-title">No data!</h5>
+            {{else}}
+            {{#each this.list_post_waitting}}
+
+
+            <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+                <div class="row no-gutters"
+                    style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+                    <div class="col-md-4" style="padding-right: 2%;">
+                        <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 210px;" class="mx-auto d-block">
+                    </div>
+                    <div class="col-md-8">
+
+                        <h5 class="card-title">{{TieuDe}}</h5>
+                        <p class="card-text">{{TomTat}}</p>
+                        <div id="tags_approve{{MaBV}}">
+                            {{#each listTag}}
+                            {{TenNhan}}.
+                            {{/each}}
+                        </div>
+                        <div style=" position: absolute;bottom:0px;right:0px">
+                            <button type="button" class="btn btn-primary">Read</button>
+                            <button type="button" class="btn btn-success" href="#" >Edit</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#myModal_Delete"
+                                onclick="action_delete(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`)">Delete</button>
+
+                        </div>
+
+                        <div>
+                            <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                                    {{TenCM}}
+                                </small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+
+        <div id="menu3" class="tab-pane fade">
+            {{#if this.empty_refuse}}
+            <h5 class="card-title">No data!</h5>
+            {{else}}
+            {{#each this.list_post_refuse}}
+
+
+            <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+                <div class="row no-gutters"
+                    style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+                    <div class="col-md-4" style="padding-right: 2%;">
+                        <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 210px;" class="mx-auto d-block">
+                    </div>
+                    <div class="col-md-8">
+
+                        <h5 class="card-title">{{TieuDe}}</h5>
+                        <p class="card-text">{{TomTat}}</p>
+                        <div id="tags_approve{{MaBV}}">
+                            {{#each listTag}}
+                            {{TenNhan}}.
+                            {{/each}}
+                        </div>
+                        <div style=" position: absolute;bottom:0px;right:0px">
+                            <button type="button" class="btn btn-primary">Read</button>
+                            <button type="button" class="btn btn-success" href="#" >Edit</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#myModal_Delete"
+                                onclick="action_delete(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`)">Delete</button>
+
+                        </div>
+
+                        <div>
+                            <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                                    {{TenCM}}
+                                </small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+
+        <div id="menu4" class="tab-pane fade">
+            {{#if this.empty_deleted}}
+            <h5 class="card-title">No data!</h5>
+            {{else}}
+            {{#each this.list_post_deleted}}
+
+            <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+                <div class="row no-gutters"
+                    style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+                    <div class="col-md-4" style="padding-right: 2%;">
+                        <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 210px;" class="mx-auto d-block">
+                    </div>
+                    <div class="col-md-8">
+
+                        <h5 class="card-title">{{TieuDe}}</h5>
+                        <p class="card-text">{{TomTat}}</p>
+                        <div id="tags_approve{{MaBV}}">
+                            {{#each listTag}}
+                            {{TenNhan}}.
+                            {{/each}}
+                        </div>
+                        <div style=" position: absolute;bottom:0px;right:0px">
+                            <button type="button" class="btn btn-primary">Read</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                data-target="#myModal_???"
+                                onclick="bv_deleted(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`)">Edit</button>
+
+                        </div>
+
+                        <div>
+                            <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                                    {{TenCM}}
+                                </small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+
+    </div>
+</div>
+
+<div class="modal" id="myModal_Delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/delete" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            <div>
+                                <textarea name="txtCode" id="mabv" rows="1" cols="6" readonly></textarea>
+                            </div>
+
+                            <h5>Title:</h5>
+                            <div>
+                                <textarea name="txtTitle" id="tieude" rows="3" cols="57" readonly></textarea>
+                            </div>
+
+                            <h5>Summary:</h5>
+                            <div>
+                                <textarea name="txtTitle" id="tomtat" rows="5" cols="57" readonly></textarea>
+                            </div>
+
+                            <h5>Category:</h5>
+                            <div>
+                                <textarea name="txtCategory" id="tencm" rows="1" cols="57" readonly></textarea>
+                            </div>
+                            
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function action_delete(MaBV,TieuDe,TenCM,TomTat) {
+      document.getElementById('mabv').textContent = MaBV;
+      document.getElementById('tieude').textContent = TieuDe;
+      document.getElementById('tencm').textContent = TenCM;
+      document.getElementById('tomtat').textContent = TomTat;
+    };
+</script>
+ <script> 
+        function addClass(id) {
+            const arr=["tab0","tab1","tab2","tab3","tab4"];
+            const valueToRemove = toString(id);
+            const new_arr = arr.filter(item => item !== valueToRemove);
+            for(var i=0;i<=4;i++)
+            {
+                var x = document.getElementById(arr[i]);
+                v.className = "";
+            }
+            var v = document.getElementById(id);
+            v.className += "active";
+        }
+    </script> 

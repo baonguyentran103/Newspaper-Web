@@ -1,0 +1,91 @@
+
+{{#sections 'css'}}
+<link rel="stylesheet" type="text/css" href="https://vnn-res.vgcloud.vn/resources.cssx?alias=css-desktop-v9-detail&amp;version=0.4.0">
+{{/sections}}
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="text-center">
+          <h1 class="text-center mt-5">
+            {{Title}}
+          </h1>
+          <p class="text-secondary fs-15">
+            {{Decription}}
+          </p>
+        </div>
+        <br/>
+      </div>
+    </div>
+    <div class="row">
+      {{#each NewsofCategory}}
+      <div class="col-sm-4  mb-5 mb-sm-2" >
+        
+        <div class="position-relative image-hover">
+          <img style="height: 240px"
+            src="{{LinkAnhDD}}"
+            class="img-fluid"
+            alt="world-news"
+          />
+          {{#if IsPremium}}
+          <img src ="../assets/images/icon.png" style="position:absolute; right:15px; top:10px; width:40px;height:40px;">
+          {{/if}}
+          <span class="thumb-title"><a style="text-decoration: none; color:white" href="/news/caterogy?id={{MaCM}}">{{TenCM}}</a></span>
+          <span class="Date">
+            <div id="BoxTag" class="tagBox">
+            <div class="tagBoxContent"><ul class="clearfix">
+            <li><span class="tagBoxTitle0">Tag : </span></li>
+            {{#each Nhan}}
+            <li><a href="/news/caterogy?tag={{this.MaNhan}}" style="text-decoration: none; color:black">{{this.TenNhan}}</a></li>
+            {{/each}}
+            </ul>
+          </div>
+        </div>
+          </span>
+        </div>
+         <div class="date-publish">{{format_date NgayXuatBan}}</div>
+        <h5 class="font-weight-600 mt-3">
+          <a href="/news/?id={{MaBV}}" style="text-decoration: none; color:black">{{TieuDe}}</a>
+        </h5>
+        <p class="fs-15 font-weight-normal">
+          {{TomTat}}
+        </p>
+        
+      </div>
+      {{/each}}
+  </div>
+  <div>
+    <nav aria-label="..." class="d-flex justify-content-center">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/news/caterogy?{{TypeofRequest State}}={{Code}}&{{#if type}}type={{type}}{{/if}}&page={{Previous page}}" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        {{#each this.page_numbers}}
+        {{#if isCurrent}}
+        <li class="page-item active">
+          <a class="page-link" href="javascript:;">{{value}}</a>
+        </li>
+        {{else}}
+        <li class="page-item">
+          <a class="page-link" href="/news/caterogy?{{TypeofRequest ../State}}={{../Code}}&{{#if ../type}}type={{../type}}{{/if}}&page={{value}}">{{value}}</a>
+        </li>
+        {{/if}}
+        {{/each}}
+        <li class="page-item">
+          <a class="page-link" href="/news/caterogy?{{TypeofRequest State}}={{Code}}&{{#if type}}type={{type}}{{/if}}&page={{Next page}}" tabindex="-1" aria-disabled="true">Next</a>
+        </li>
+        {{!-- <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li> --}}
+      </ul>
+    </nav>
+  </div>
+</div>
+    

@@ -1,0 +1,318 @@
+
+{{#sections 'js'}}
+<script src="../../assets/js/admin_tag.js"></script>
+{{/sections}}
+
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="row">
+                                <div class="col-10" >
+                                <h4 class="m-0 font-weight-bold text-primary">List Tag</h4>
+                                </div>
+                                <div class="col-2">
+                                    <div class="float-right">
+                                <button style="margin-right: 0ch;" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_Add">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+                                    </svg> Add Tag
+                                </button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tag Code</th>
+                                            <th>Value</th>
+
+                                            <th style="text-align: center;">Edit</th>
+                                            <th style="text-align: center;">Add/Delete</th>
+                                        </tr>
+                                    </thead>
+                                        
+                                    <tfoot>
+                                        <tr>
+                                            <th>Tag Code</th>
+                                            <th>Value</th>
+
+                                            <th style="text-align: center;">Edit</th>
+                                            <th style="text-align: center;">Add/Delete</th>
+                                        </tr>
+                                      </tfoot>
+                                    <tbody>
+{{#if this.empty}}
+    <h5 class="card-title">No data!</h5>
+{{else}}
+    {{#each this.list_tag}}
+    <tr>
+        <th scope="row">{{MaNhan}}</th>
+        <td>{{TenNhan}}</td>
+
+
+        <td align="center">
+            <button type="button" class="btn btn-info"data-toggle="modal" data-target="#myModal_Edit"
+                    onclick="tag_edit(`{{MaNhan}}`,`{{TenNhan}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"></path>
+                </svg>
+                Edit
+            </button>
+        </td>
+        <td align="center">
+           {{#if TrangThai}}
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_Delete"
+                    onclick="tag_del(`{{MaNhan}}`,`{{TenNhan}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-dash-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6 6a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"></path>
+                </svg>
+                DEL
+            </button>
+        {{else}}
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_Add_Del"
+                    onclick="tag_add_del(`{{MaNhan}}`,`{{TenNhan}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"></path>
+                </svg>
+                ADD
+            </button>
+        {{/if}}
+        </td>
+
+    </tr>
+    {{/each}}
+{{/if}}
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+ 
+            </div>
+ 
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+<!-- _______________________________________Modal_______________________________________  -->
+<div class="modal" id="myModal_Delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/tag/delete" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div  id="del_code1"></div>
+                            <div hidden id="del_code1">
+                                <textarea name="txtCode" id="del_code" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <h5>Value:</h5>
+                            <div aria-readonly="true" id="del_value">
+                            </div>
+                            <h5>Status:</h5>
+                            <div aria-readonly="true" id="del_status">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal_Add_Del">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/tag/add_del" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div  id="add_del_code1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="add_del_code" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <h5>Value:</h5>
+                            <div aria-readonly="true" id="add_del_value">
+                            </div>
+                            <h5>Status:</h5>
+                            <div aria-readonly="true" id="add_del_status">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success"> Add </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal_Edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/tag/edit" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div id="edit_code1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="edit_code" rows="1" cols="47" readonly></textarea>
+                            </div>
+                            <h5>Old Value:</h5>
+                            <div id="edit_value1"></div>
+                            <h5>New Value:</h5>
+                            <div>
+                                <textarea required name="txtValue" id="edit_value" rows="1" cols="47" ></textarea>
+                                <div>
+                                <span class="tag_message" style="color: red;"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info"> Edit </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal_Add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/tag/add" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            {{!-- <h5>Code:</h5>
+                            <div>
+                                <textarea name="txtCode" id="add_code" rows="1" cols="47" ></textarea>
+                            </div> --}}
+                            <h5>Value:</h5>
+                            <div>
+                                <textarea required name="txtValue" id="add_value" rows="1" cols="47" ></textarea>
+                                <div>
+                                <span class="tag_message" style="color: red;"></span>
+                                </div>
+                            </div>
+                            <h5>Status:</h5>
+                            <div>
+                                <textarea required name="txtStatus"  id="add_status" rows="1" cols="47" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success"> Add </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function tag_del(MaNhan,TenNhan,TrangThai) {
+      document.getElementById('del_code').textContent = MaNhan;
+      document.getElementById('del_value').textContent = TenNhan;
+      document.getElementById('del_status').textContent = TrangThai;
+      document.getElementById('del_code1').textContent = MaNhan;
+    };
+    function tag_add_del(MaNhan,TenNhan,TrangThai) {
+      document.getElementById('add_del_code').textContent = MaNhan;
+      document.getElementById('add_del_value').textContent = TenNhan;
+      document.getElementById('add_del_status').textContent = TrangThai;
+      document.getElementById('add_del_code1').textContent = MaNhan;
+    };
+    function tag_edit(MaNhan,TenNhan,TrangThai) {
+      document.getElementById('edit_code').textContent = MaNhan;
+      document.getElementById('edit_code1').textContent = MaNhan;
+      document.getElementById('edit_value1').textContent = TenNhan;
+    };
+</script>
+

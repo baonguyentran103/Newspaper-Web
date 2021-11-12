@@ -1,0 +1,273 @@
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">List Writer</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Pseudonym</th>
+                                            
+                                            <th style="text-align: center;">View</th>
+                                            <th style="text-align: center;">Del/Add</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                        
+                                    <tfoot>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Pseudonym</th>
+                                            
+                                            <th style="text-align: center;">View</th>
+                                            <th style="text-align: center;">Del/Add</th>
+                                           
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {{#if this.empty}}
+                                            <h5 class="card-title">No data!</h5>
+                                        {{else}}
+                                            {{#each this.list_writer}}
+                                            <tr>
+                                                <td >{{MaUS}}</td>
+                                                <td>{{TenUS}}</td>
+                                                <td>{{ButDanh}}</td>
+                                                
+                                                <td align="center"> 
+
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_View"
+                                                        onclick="writer_view(`{{MaUS}}`,`{{TenUS}}`,`{{TKUS}}`,`{{ButDanh}}`,`{{Email}}`,`{{NgaySinh}}`)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                                                        </svg>
+                                                        View
+                                                    </button>
+
+                                                    
+                                                   
+                                                </td>
+                                                <td align="center">
+                                                {{#if this.TrangThai}}
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_Delete"
+                                                            onclick="writer_del(`{{MaUS}}`,`{{TenUS}}`,`{{ButDanh}}`)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                                        </svg>
+                                                        Del
+                                                    </button>
+                                                    {{else}}
+                                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_Add"
+                                                            onclick="writer_add(`{{MaUS}}`,`{{TenUS}}`,`{{ButDanh}}`)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
+                                                            </svg>
+                                                            Add
+                                                        </button>
+                                                    {{/if}}
+                                                </td>
+                                               
+                                            </tr>
+                                            {{/each}}
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- _______________________________________Modal_______________________________________  -->
+<div class="modal" id="myModal_Delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/writer/delete" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div id="del_code1"></div>
+                            <div>
+                                <textarea hidden name="txtCode" id="del_code" rows="1" cols="5" readonly></textarea>
+                            </div>
+                            <h5>Name:</h5>
+                            <div aria-readonly="true" id="del_name">
+                            </div>
+                            <h5>Pseudonym:</h5>
+                            <div aria-readonly="true" id="del_pseudonym">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal_Add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/writer/add" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div id="add_code1"> </div>
+                            <div>
+                                <textarea hidden name="txtCode" id="add_code" rows="1" cols="5" readonly></textarea>
+                            </div>
+                            <h5>Name:</h5>
+                            <div aria-readonly="true" id="add_name">
+                            </div>
+                            <h5>Pseudonym:</h5>
+                            <div aria-readonly="true" id="add_pseudonym">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success"> Add </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal_View">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">View Writer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                                <div  id="view_code">
+                                </div>
+                            <h5>Name:</h5>
+                                <div  id="view_name">
+                                </div>
+                            <h5>User:</h5>
+                                <div  id="view_tkus">
+                                </div>
+                            <h5>Pseudonym:</h5>
+                                <div  id="view_butdanh">
+                                </div>
+                            <h5>Email:</h5>
+                                <div  id="view_email">
+                                </div>
+                            <h5>Date of Birth:</h5>
+                                <div  id="view_ngaysinh">
+                                </div>
+
+                        </div>
+                    </div>
+
+             </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function writer_del(MaUS,TenUS,ButDanh)
+    {
+        document.getElementById('del_code').textContent = MaUS;
+        document.getElementById('del_code1').textContent = MaUS;
+        document.getElementById('del_name').textContent = TenUS;
+        document.getElementById('del_pseudonym').textContent = ButDanh;
+    };
+    function writer_add(MaUS,TenUS,ButDanh)
+    {
+        document.getElementById('add_code').textContent = MaUS;
+        document.getElementById('add_code1').textContent = MaUS;
+        document.getElementById('add_name').textContent = TenUS;
+        document.getElementById('add_pseudonym').textContent = ButDanh;
+    };
+    function writer_view(MaUS,TenUS,TKUS,ButDanh,Email,NgaySinh)
+    {
+        document.getElementById('view_code').textContent = MaUS;
+        document.getElementById('view_name').textContent = TenUS;
+        document.getElementById('view_tkus').textContent = TKUS;
+        document.getElementById('view_butdanh').textContent = ButDanh;
+        document.getElementById('view_email').textContent = Email;
+        document.getElementById('view_ngaysinh').textContent = NgaySinh;
+
+    };
+</script>

@@ -1,0 +1,25 @@
+
+</style>
+
+{{#each this.news}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="news-post-wrapper">
+            <div class="news-post-wrapper-sm ">
+            <h1 class="text-center">
+                {{TieuDe}}
+            </h1>
+            <p
+                class="fs-15 d-flex justify-content-center align-items-center m-0"
+            >
+                {{ButDanh}} | {{format_date NgayXuatBan}}
+            </p>
+            </div>
+            {{{NoiDung}}}
+          
+        </div>
+    </div>
+  </div>
+</div>
+{{/each}}

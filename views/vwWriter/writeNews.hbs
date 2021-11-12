@@ -1,0 +1,49 @@
+<div class="card">
+  <h4 class="card-header">
+    Write News
+  </h4>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <label for="cateName">Category:</label>
+        <select class="selectpicker" id = "cateName" name = "CateName" required>
+            {{#each this.category2}}
+                <option value="{{MaCM}}">{{TenCM}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <br>
+        <label for="title">Tiêu đề:</label>
+        <input class="form-control" id ="title" type="text" placeholder="Tiêu đề" name = 'title'>
+        <br>
+        <label for="Avatar">Link ảnh đại diện:</label>
+        <input class="form-control" id ="Avatar" type="text" placeholder="Đại diện" name = 'Avatar'>
+        <br>    
+        <label for="Abstract" class="form-label">Tóm tắt</label>
+        <textarea class="form-control" id="Abstract" rows="3" name="abstract"></textarea>
+        <br>
+        <label for="content">Nội dung:</label>
+        <textarea name="content" id="content" rows="10" cols="80"></textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor 4
+            // instance, using default configuration.
+            CKEDITOR.replace( 'content' );
+        </script>
+        <br>
+        <label for="nhan">Nhãn:</label>
+        <select class="selectpicker" multiple data-live-search="true" aria-label="multiple select example" name="nhan" id ="nhan" required>
+          {{#each this.nhan}}
+            <option value="{{MaNhan}}">{{TenNhan}}</option>
+          {{/each}}
+        </select>
+        <br>
+        <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Save
+      </button>
+      </div>
+      
+      
+    </form>
+  </div>
+</div>

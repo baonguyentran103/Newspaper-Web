@@ -1,0 +1,42 @@
+
+{{#sections 'js'}}
+<script src="../assets/js/otp.js"></script>
+{{/sections}}
+
+<div class="card text-center" style="padding:20px;">
+  <h3>
+Your account has not been verified, please verify by entering the OTP sent to your registered email</h3>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">   
+
+        <div class="alert alert-success alert-dismissible" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span class="success-message"></span>
+        </div>
+
+        <form id="otpForm">
+          <div class="form-group">  
+            <label for="mobile">OTP:</label>
+            <input type="text" class="form-control" name="otp" placeholder="Enter OTP" required="" id="otp">
+            <span class="otp-message" style="color: red;"></span>
+          </div>
+          {{#if type}}
+          <div class="form-group"> 
+          <div>
+             <label for="mobile">New Password:</label>
+             <input type="password" class="form-control" placeholder="Enter password" id="input_newpass">
+          </div>
+          </div>
+          {{/if}}
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" id={{#if type}}"verifyPass"{{else}}"verifyOtp"{{/if}}>Verify OTP</button>
+          </div>
+        </form>        
+      </div>
+  </div>
+</div>
+

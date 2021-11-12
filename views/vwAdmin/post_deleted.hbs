@@ -1,0 +1,512 @@
+            <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="row">
+                                <div class="col-10" >
+                                <h4 class="m-0 font-weight-bold text-primary">{{this.title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <colgroup>
+                                        <col width=auto span="1">
+                                        <col width=auto span="2">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        <col width=auto span="1">
+                                        
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th style="text-align: center;">View</th>
+                                            <th style="text-align: center;">Edit</th>
+                                            <th style="text-align: center;">Publish</th>
+                                            <th style="text-align: center;">Extend</th>
+                                            <th style="text-align: center;">Premium</th>
+                                        </tr>
+                                    </thead>
+                                        
+                                    <tfoot>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th style="text-align: center;">View</th>
+                                            <th style="text-align: center;">Edit</th>
+                                            <th style="text-align: center;">Publish</th>
+                                            <th style="text-align: center;">Extend</th>
+                                            <th style="text-align: center;">Premium</th>
+                                        </tr>
+                                      </tfoot>
+                                    <tbody>
+{{#if this.empty_deleted}}
+<h5 class="card-title">No data!</h5>
+{{else}}
+{{#each this.list_post_deleted}}
+<tr>
+        <th style="text-align: center;"> <img src={{LinkAnhDD}} alt="..."  class="img-thumbnail" style="width:100%; height: 50px;"></th>
+        <td>{{TieuDe}}</td>
+        <td>{{TenCM}}</td>
+        <td align="center">
+            <button type="button" class="btn btn-outline-info" title="View" 
+            data-toggle="modal" data-target="#myModal_View"
+             onclick="location.href='../../../news/forAEW_3?id={{MaBV}}_type={{TrangThai}}'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                </svg>
+            </button>
+        </td>
+        <td align="center">
+            <button type="button" class="btn btn-outline-primary" title="Edit" data-toggle="modal" data-target="#myModal_Edit"
+                onclick="admin_edit(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`,`{{LinkAnhDD}}`,`{{MaCM}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"></path>
+                </svg>
+            </button>
+        </td>
+        <td align="center">
+           <button type="button" class="btn btn-outline-success" title="Publish" 
+           data-toggle="modal" data-target="#myModal_Publish"
+            onclick="admin_publish(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`,`{{LinkAnhDD}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+                <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"></path>
+                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"></path>
+                </svg>
+            </button>
+        </td>
+        <td align="center">
+            <button type="button" class="btn btn-outline-danger" title="Extend"
+            data-toggle="modal" data-target="#myModal_Extend"
+            onclick="admin_extend(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`,`{{LinkAnhDD}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+                </svg>
+            </button>
+        </td>
+        <td align="center">
+            {{#if this.IsPremium}}
+            <button type="button" class="btn btn-outline-warning" title="Exit Premium"
+            data-toggle="modal" data-target="#myModal_Exit_Premium"
+            onclick="admin_exit_premium(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`,`{{LinkAnhDD}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"></path>
+                </svg>
+            </button>
+            {{else}}
+            <button type="button" class="btn btn-outline-secondary" title="Add Premium"
+            data-toggle="modal" data-target="#myModal_Add_Premium"
+            onclick="admin_add_premium(`{{MaBV}}`,`{{TieuDe}}`,`{{TenCM}}`,`{{TomTat}}`,`{{LinkAnhDD}}`,`{{TrangThai}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"></path>
+                </svg>
+            </button>
+            
+            {{/if}}
+        </td>
+        
+    </tr>
+    {{/each}}
+{{/if}}
+</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+<div class="modal" id="myModal_Add_Premium">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Premium</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/add_premium" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            <div  id="add_mabv1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="add_mabv" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <div hidden>
+                                <textarea name="txtType" id="add_type" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <br>
+                            <h5>Image:</h5>
+                            <div>
+                            <img id="add_anh" alt="..."  style="width:100%; height: 200px;">
+                            </div>
+                            <br>
+                            <h5>Title:</h5>
+                            <div  id="add_tieude"></div>
+                            <br>
+                            <h5>Summary:</h5>
+                            <div  id="add_tomtat"></div>
+                            <br>
+                            <h5>Category:</h5>
+                             <div  id="add_tencm"></div>                            
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-warning"> Add Premium </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal_Exit_Premium">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Exit Premium</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/exit_premium" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            <div  id="exit_mabv1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="exit_mabv" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                             <div hidden>
+                                <textarea name="txtType" id="exit_type" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <br>
+                            <h5>Image:</h5>
+                            <div>
+                            <img id="exit_anh" alt="..."  style="width:100%; height: 200px;">
+                            </div>
+                            <br>
+                            <h5>Title:</h5>
+                            <div  id="exit_tieude"></div>
+                            <br>
+                            <h5>Summary:</h5>
+                            <div  id="exit_tomtat"></div>
+                            <br>
+                            <h5>Category:</h5>
+                             <div  id="exit_tencm"></div>                            
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-secondary"> Exit Premium </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal_Publish">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Publish</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/publish" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            <div  id="pb_mabv1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="pb_mabv" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <div hidden>
+                                <textarea name="txtType" id="pb_type" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <br>
+                            <h5>Image:</h5>
+                            <div>
+                            <img id="pb_anh" alt="..."  style="width:100%; height: 200px;">
+                            </div>
+                            <br>
+                            <h5>Title:</h5>
+                            <div  id="pb_tieude"></div>
+                            <br>
+                            <h5>Summary:</h5>
+                            <div  id="pb_tomtat"></div>
+                            <br>
+                            <h5>Category:</h5>
+                             <div  id="pb_tencm"></div>                            
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-success"> Publish </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal_Extend">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Extend</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/extend" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            <div  id="ex_mabv1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="ex_mabv" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <div hidden>
+                                <textarea name="txtType" id="ex_type" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <br>
+                            <h5>Image:</h5>
+                            <div>
+                            <img id="ex_anh" alt="..."  style="width:100%; height: 200px;">
+                            </div>
+                            <br>
+                            <h5>Title:</h5>
+                            <div  id="ex_tieude"></div>
+                            <br>
+                            <h5>Summary:</h5>
+                            <div  id="ex_tomtat"></div>
+                            <br>
+                            <h5>Category:</h5>
+                             <div  id="ex_tencm"></div>
+                            <br> 
+                             <h5>Type:</h5>
+                            <select id="edit_TrangThai" class="form-control" name="txtTrangThai">
+                                <option value="0">Draft</option>
+                                <option value="1">Refuse</option>
+                                <option value="5" selected >Deleted</option>
+                            </select>                                                                  
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-danger"> Done </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal_Edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/admin/view/post/edit" method="POST">
+                    <div class="container">
+                          <div class="form-group">
+                            <h5>Code:</h5>
+                            <div  id="ad_edit_code1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="ad_edit_code" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <div hidden>
+                                <textarea name="txtType" id="ad_edit_type" rows="1" cols="47" readonly  ></textarea>
+                            </div>
+                            <br>
+                            <h5>Image:</h5>
+                            <div>
+                            <img id="ad_edit_anh" alt="..."  style="width:100%; height: 200px;">
+                            </div>
+                            <br>
+                            <h5>Title:</h5>
+                            <div  id="ad_edit_tieude"></div>
+                            <br>
+                            <h5>Summary:</h5>
+                            <div  id="ad_edit_tt"></div>
+                            <br>                        
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Category:</label>
+                            {{!-- <div>
+                                <textarea name="txtCode" id="category_approve" rows="1" cols="6"> </textarea>
+                                <button>Edit</button>
+                            </div> --}}
+                            <select id="ad_edit_cm" class="form-control" name="txtCategory">
+                                {{#each this.allcategory}}
+                                <option value="{{MaCM}}">{{TenCM}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label style="font-weight: bold;">Edit Tag:</label>
+                            <br>
+                           <select multiple name="txtTag" title="Tag ... " data-live-search="true"
+                           id="list1">
+
+                           </select>
+                            
+                        </div>
+
+
+                    </div>
+                    {{!-- <div class="container">
+                        <div class="form-group">
+                            <label for="comment">Publication date (dd/mm/yyyy):</label>
+                            <textarea class="form-control" rows="1" id="comment" name="txtngaydang"></textarea>
+                        </div>
+                    </div> --}}
+                    <button type="submit" class="btn btn-success"> Edit </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+<script>
+    function admin_add_premium(MaBV,TieuDe,TenCM,TomTat,LinkAnhDD,Type) {
+      document.getElementById('add_mabv1').textContent = MaBV;
+      document.getElementById('add_mabv').textContent = MaBV;
+      document.getElementById('add_type').textContent = Type;
+      document.getElementById('add_tieude').textContent = TieuDe;
+      document.getElementById('add_tencm').textContent = TenCM;
+      document.getElementById('add_tomtat').textContent = TomTat;
+      document.getElementById("add_anh").src = LinkAnhDD;
+    };
+    function admin_exit_premium(MaBV,TieuDe,TenCM,TomTat,LinkAnhDD,Type) {
+      document.getElementById('exit_mabv1').textContent = MaBV;
+      document.getElementById('exit_mabv').textContent = MaBV;
+      document.getElementById('exit_type').textContent = Type;
+      document.getElementById('exit_tieude').textContent = TieuDe;
+      document.getElementById('exit_tencm').textContent = TenCM;
+      document.getElementById('exit_tomtat').textContent = TomTat;
+      document.getElementById("exit_anh").src = LinkAnhDD;
+    };
+    function admin_publish(MaBV,TieuDe,TenCM,TomTat,LinkAnhDD,Type) {
+      document.getElementById('pb_mabv1').textContent = MaBV;
+      document.getElementById('pb_mabv').textContent = MaBV;
+      document.getElementById('pb_type').textContent = Type;
+      document.getElementById('pb_tieude').textContent = TieuDe;
+      document.getElementById('pb_tencm').textContent = TenCM;
+      document.getElementById('pb_tomtat').textContent = TomTat;
+      document.getElementById("pb_anh").src = LinkAnhDD;
+    };
+     function admin_extend(MaBV,TieuDe,TenCM,TomTat,LinkAnhDD,Type) {
+      document.getElementById('ex_mabv1').textContent = MaBV;
+      document.getElementById('ex_mabv').textContent = MaBV;
+      document.getElementById('ex_type').textContent = Type;
+      document.getElementById('ex_tieude').textContent = TieuDe;
+      document.getElementById('ex_tencm').textContent = TenCM;
+      document.getElementById('ex_tomtat').textContent = TomTat;
+      document.getElementById("ex_anh").src = LinkAnhDD;
+    };
+     function admin_edit(MaBV,TieuDe,TenCM,TomTat,LinkAnhDD,MaCM,Type) {
+
+    $.ajax
+      ({
+        url  : `/admin/get_tag`,
+        type : "POST",
+        cache:false,
+        data : {MaBV},
+        success:function(response){
+          console.log(response);
+         //console.log(response.tag1[0].MaNhan);
+         let src="";
+         let tmp1=response.tag1;
+         let tmp2=response.tag2;
+        
+         for(let i=0;i<response.tag1.length;i++)
+         {
+           let temp1=tmp1[i].MaNhan;
+           let temp2=tmp1[i].TenNhan;
+           //src=src+`<option value='${tmp1[i].MaNhan}' selected>${tmp1[i].TenNhan}</option>`
+           src=src+`<option value="`+temp1+`"selected class="opt-remove">`+temp2+`</option>`
+         }
+        //console.log(src);
+         for(let i=0;i<response.tag2.length;i++)
+         {
+           src=src+`<option value='${tmp2[i].MaNhan}' class="opt-remove">${tmp2[i].TenNhan}</option>`
+         }
+        
+         $('#list1').selectpicker();
+         console.log(src);
+         $("#list1").append(src);
+         $('#list1').selectpicker('refresh');
+         }
+      });
+
+
+     document.getElementById('ad_edit_code1').textContent = MaBV;
+      document.getElementById('ad_edit_code').textContent = MaBV;
+      document.getElementById('ad_edit_tt').textContent = TomTat;
+      document.getElementById('ad_edit_tieude').textContent = TieuDe;
+      document.getElementById('ad_edit_cm').value = MaCM;
+      document.getElementById("ad_edit_anh").src = LinkAnhDD;
+      document.getElementById('ad_edit_type').textContent = Type;
+    
+      
+    };
+</script>

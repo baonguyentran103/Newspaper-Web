@@ -1,0 +1,198 @@
+<div class="modal" id="myModal_Tuchoi">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Refuse</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/editor/view/refuse" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Post code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div id="mabv_refuse1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="mabv_refuse" rows="1" cols="5"></textarea>
+                            </div>
+                            <h5>Title:</h5>
+                            <div aria-readonly="true" id="tieude_refuse">
+                            </div>
+                            <h5>Reason:</h5>
+                            <textarea rows="6" cols="59" name="txtRefuse"> </textarea>
+                            {{!-- <input type="text" class="form-control" id="inputName" name="txttuchoi"
+                                style="padding:10px 0;"></input> --}}
+                        </div>
+
+
+                    </div>
+
+                    <button type="submit" class="btn btn-danger"> Send </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal_Duyet">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Approve</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+            <div class="modal-body">
+                <form action="/editor/view/approve" method="POST">
+                    <div class="container">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Post code:</label>
+                            {{!-- <div class="form-control" name="txtCode" id="mabv_approve"> </div> --}}
+                            
+
+                            <div id="mabv_approve1"></div>
+                            <div hidden>
+                                <textarea name="txtCode" id="mabv_approve" rows="1" cols="5"></textarea>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Title:</label>
+                            {{!-- <textarea class="form-control" id="tieude_approve"></textarea> --}}
+                            {{!-- <div class="form-control" name="txtCode" id="tieude_approve"> </div> --}}
+                            <div id="tieude_approve"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Category:</label>
+                            {{!-- <div>
+                                <textarea name="txtCode" id="category_approve" rows="1" cols="6"> </textarea>
+                                <button>Edit</button>
+                            </div> --}}
+                            <select id="maCM" class="form-control" name="txtCategory">
+                                {{#each this.allcategory}}
+                                <option value="{{MaCM}}">{{TenCM}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label style="font-weight: bold;">Edit Tag:</label>
+                            <br>
+                           <select multiple name="txtTag" title="Tag ... " data-live-search="true"
+                           id="list1">
+
+                           </select>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold;" for="comment">Publication date:</label>
+                            <input type="date" class="form-control" id="comment" name="txtPublicationdate"></textarea>
+                            <br>
+                            
+                        </div>
+
+                    </div>
+                    {{!-- <div class="container">
+                        <div class="form-group">
+                            <label for="comment">Publication date (dd/mm/yyyy):</label>
+                            <textarea class="form-control" rows="1" id="comment" name="txtngaydang"></textarea>
+                        </div>
+                    </div> --}}
+                    <button type="submit" class="btn btn-success"> Send </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {{!-- <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Gửi</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+<div class="card">
+
+    <br>
+    {{#if this.empty}}
+    <h5 class="card-title">Không có dữ liệu!</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    {{else}}
+    {{#each this.allpaper}}
+
+
+    <div class="card mb-3" style="border: 0; padding-left: 15px; padding-right: 15px">
+        <div class="row no-gutters"
+            style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+            <div class="col-md-4" style="padding-right: 2%; position:relative">
+                <img src={{LinkAnhDD}} alt="..." style="width:100%; height: 240px;" class="mx-auto d-block">
+                {{!-- <img src ="../../assets/images/icon.png" style="position:absolute; left:10px; bottom:10px; width: 40px; height:40px" > --}}
+                 
+            </div>
+            <div class="col-md-8">
+
+                <h5 class="card-title">{{TieuDe}}</h5>
+                <p class="card-text">{{TomTat}}</p>
+                <div style=" position: absolute;bottom:0px;right:0px">
+                    <button onclick="location.href='../../../news/forAEW_4a?id={{MaBV}}'" class="btn btn-primary" type="button">
+                        Read</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_Duyet"
+                        onclick="bv_approve(`{{MaBV}}`,`{{TieuDe}}`,`{{MaCM}}`);test_listtag();">Approve</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_Tuchoi"
+                        onclick="bv_refuse(`{{MaBV}}`,`{{TieuDe}}`)">Refuse</button>
+
+                </div>
+
+                <div>
+                    <p class="card-text" style=" position: absolute;bottom:0px;"> <small class="text-muted">
+                            {{TenCM}}
+                        </small>
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+
+
+    {{!-- <div class="col mb-4">
+        <div class="row no-gutters"
+            style="padding: 1%; border: 1px solid gray; border-radius:  20px; box-shadow: 2px 2px #888888;">
+            <div class="col-md-4" style="padding-right: 2%;">
+                <img src="http://webcoban.vn/image/flower.gif" alt="..." style="width:100%" class="mx-auto d-block">
+            </div>
+            <div class="col-md-8">
+
+                <h5 class="card-title">Trường đại học Khoa học Tự nhiên thông báo tuyển sinh năm học 2021 - 2022
+                </h5>
+                <p class="card-text">Trường Đại học Khoa học Tự nhiên, Đại học Quốc gia Thành phố Hồ Chí Minh là một
+                    trong những trường đại học đào tạo và nghiên cứu khoa học...</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                <button type="button" class="btn btn-primary">Xem</button>
+                <button type="button" class="btn btn-success">Duyệt</button>
+                <button type="button" class="btn btn-danger">Từ chối</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+</div>
+
+

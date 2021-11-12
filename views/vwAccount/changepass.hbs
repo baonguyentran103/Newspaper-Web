@@ -1,0 +1,33 @@
+
+{{#sections 'js'}}
+<script src="../assets/js/changepass.js"></script>
+{{/sections}}
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+
+<h3 class="text-center">Change Password</h3>
+<form method="post" id="passwordForm" action={{TypeOfUserChangePass type}}>
+
+<div class="form-group">  
+<input required type="password" class="input-lg form-control" name="password0" id="password0" placeholder="Old Password" autocomplete="off">
+</div>
+<span class="password-message0" style="color: red;"></span>
+<div class="form-group">  
+<input  type="password" class="input-lg form-control" name="password1" id="password1" placeholder="New Password" autocomplete="off">
+</div>
+
+<div class="form-group">  
+<input type="password" class="input-lg form-control" name="password2" id="password2" placeholder="Repeat Password" autocomplete="off">
+</div>
+<span class="password-message" style="color: red;"></span>
+<div class="form-group">  
+<button type="submit" class="btn btn-success">Change Password</button>
+</div>
+</form>
+</div><!--/col-sm-6-->
+</div><!--/row-->
+</div>

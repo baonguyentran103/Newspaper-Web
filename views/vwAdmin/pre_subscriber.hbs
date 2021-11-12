@@ -1,0 +1,88 @@
+<h4>Subscriber</h4>
+
+<table class="table table-striped">
+<thead>
+<tr>
+    <th scope="col">Code</th>
+    <th scope="col">Name</th>
+    <th scope="col">Premium</th>
+</tr>
+</thead>
+<tbody>
+{{#if this.empty}}
+    <h5 class="card-title">No data!</h5>
+{{else}}
+    {{#each this.list_subscriber}}
+    <tr>
+        <th scope="row">{{MaUS}}</th>
+        <td>{{TenUS}}</td>
+        <td>{{IsPremium}}</td>
+
+        <td> 
+
+            <button type="button" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                </svg>
+                View
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_Delete"
+                    onclick="subscriber_del(`{{MaUS}}`,`{{TenUS}}`)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                </svg>
+                Delete
+            </button>
+        </td>
+    </tr>
+    {{/each}}
+{{/if}}
+</tbody>
+</table>
+
+<!-- _______________________________________Modal_______________________________________  -->
+<div class="modal" id="myModal_Delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/view/subscriber/delete" method="POST">
+                    <div class="container">
+
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <h5>Code:</h5>
+                            {{!-- <textarea readonly name="txtCode" id="mabv_refuse" rows="1" cols="6"> </textarea> --}}
+                            <div>
+                                <textarea name="txtCode" id="del_code" rows="1" cols="5" readonly></textarea>
+                            </div>
+                            <h5>Name:</h5>
+                            <div aria-readonly="true" id="del_name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger"> Delete </button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function subscriber_del(MaUS,TenUS)
+    {
+        document.getElementById('del_code').textContent = MaUS;
+        document.getElementById('del_name').textContent = TenUS;
+    };
+</script>
