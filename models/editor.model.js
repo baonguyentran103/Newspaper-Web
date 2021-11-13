@@ -74,7 +74,7 @@ module.exports = {
     const sql=`
     select a.TieuDe, a.MaBV, a.TomTat, a.LinkAnhDD, c.TenCM, c.MaCM
     from baiviet a,btv_cm b, chuyenmuc c
-    where c.MaCM=b.MaCM and b.MaBTV='${btv}' and b.MaCM=a.MaCM and a.TrangThai='3' and a.BTV_Act='${btv}'
+    where c.MaCM=b.MaCM and b.MaBTV='${btv}' and b.MaCM=a.MaCM and a.TrangThai='3'
     and c.TrangThai='1'`; //Trạng thái =0 là chưa duyệt
     return db.raw(sql);
   },
@@ -83,7 +83,7 @@ module.exports = {
     const sql=`
     select a.TieuDe, a.MaBV, a.TomTat, a.LinkAnhDD, c.TenCM, c.MaCM
     from baiviet a,btv_cm b, chuyenmuc c
-    where c.MaCM=b.MaCM and b.MaBTV='${btv}' and b.MaCM=a.MaCM and a.TrangThai='1' and a.BTV_Act='${btv}'
+    where c.MaCM=b.MaCM and b.MaBTV='${btv}' and b.MaCM=a.MaCM and a.TrangThai='1'
     and c.TrangThai='1'`; //Trạng thái =0 là chưa duyệt
     return db.raw(sql);
   },
